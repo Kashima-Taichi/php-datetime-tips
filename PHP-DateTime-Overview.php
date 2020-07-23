@@ -268,3 +268,35 @@
     br();
     $date = new DateTimeImmutable();
     echo $date->format('Y-m-d H:i:s');
+    br();
+
+    /*
+    |--------------------------------------------------------------------------
+    | 日本語の曜日の設定
+    |--------------------------------------------------------------------------
+    */
+
+    br();
+    echo "《 日本語の曜日の設定 》";
+    br();
+    br();
+    echo "今日のプログラム上の曜日と日本語の曜日を表示";
+    br();
+    $yobi = ["日", "月", "火", "水", "木", "金", "土"];
+    $date = new DateTime();
+    echo $date->format('w');
+    br();
+    echo $yobi[$date->format('w')];
+    br();
+    br();
+    echo "明日から7日間の曜日を表示する";
+    br();
+    $yobi = ["日", "月", "火", "水", "木", "金", "土"];
+    $date = new DateTime();
+    $date->modify('+1 days');
+    for ($i=0; $i <= 6; $i++) { 
+        echo $date->format('n月d日') . '(' . $yobi[$date->format('w')] . ')';
+        $date->modify('+1 days');
+        br();
+    }
+
